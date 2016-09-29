@@ -1,0 +1,4 @@
+*.o
+tool
+output.txt
+*~

@@ -1,0 +1,32 @@
+[
+{
+	"directory": "./",
+	"command": "gcc test.c",
+	"file": "./test.c"
+},
+{
+	"directory": "./",
+	"command": "gcc test2.c",
+	"file": "./test2.c"
+},
+{
+	"directory": "./",
+	"command": "gcc test3.c",
+	"file": "./test3.c"
+},
+{
+	"directory": "./",
+	"command": "gcc test4.c",
+	"file": "./test4.c"
+},
+{
+	"directory": "./",
+	"command": "gcc test5.c",
+	"file": "./test6.c"
+},
+{
+	"directory": "./",
+	"command": "gcc test6.c",
+	"file": "./test6.c"
+}
+]
