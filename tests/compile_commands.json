@@ -28,5 +28,10 @@
 	"directory": "./",
 	"command": "gcc test6.c",
 	"file": "./test6.c"
+},
+{
+	"directory": "./",
+	"command": "gcc test7.c",
+	"file": "./test7.c"
 }
 ]

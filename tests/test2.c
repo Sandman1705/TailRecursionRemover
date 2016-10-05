@@ -14,16 +14,6 @@ int huio(int a, int b)
 	return huio(a+1,b+2);
 }
 
-int main(void) {
-	int result = -1, val = 4;
-	do_math(&val);
-	int a;
-	a=3;
-	a=a+2;
-	huio(a+5,a);
-	return result;
-}
-
 void huio2(int a, int b)
 {
 	if (a>10)
@@ -37,21 +27,12 @@ void huio2(int a, int b)
 	huio2(a,b);
 }
 
-void ifmadness(int a)
-{
-	if (a > 5)
-	{
-		if (a > 10)
-			ifmadness(3);		
-		else	
-		{
-			ifmadness(7);			
-		}	
-	}
-	else
-	{
-		ifmadness(4);
-	}
+
+int main(void) {
+	int result = -1, val = 4;
+	do_math(&val);
+	return result;
 }
+
 
 

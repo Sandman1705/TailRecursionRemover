@@ -1,7 +1,3 @@
-void do_math(int *x) {
-	*x += 5;
-}
-
 int fact(int a, int b, int c)
 {
 	int temp = a+b;
@@ -10,7 +6,7 @@ int fact(int a, int b, int c)
 	else
 	{
 		a= a-4;
-		return 4+a*b;
+		return huio(a,b);  // greska: vraca void
 	}
 }
 
@@ -26,12 +22,7 @@ void huio(int a, int b)
 }
 
 int main(void) {
-	int result = -1, val = 4;
-	do_math(&val);
-	int a;
-	a=3;
-	a=a+2;
-	foo(a,4,a+6);
+	int result = 3;
 	return result;
 }
 

@@ -1,12 +1,23 @@
-int fun(int a, float b, int c);
-
-int x;
-const float PI = 3.14;
-
-int fun(int a, float b, int c)
+void ifmadness(int a)
 {
-	if (a>0)
-		return fun(a+1,b+2.5,3+c);
+	if (a > 5)
+	{
+		if (a > 10)
+		{
+			if(a)
+				ifmadness(2);
+			ifmadness(3);		
+		}		
+		else	
+			ifmadness(7);			
+	}
 	else
-		return fun(a+1,a+1,a+1);
+	{
+		ifmadness(4);
+	}
+}
+
+int main()
+{
+	return 0;
 }

@@ -53,7 +53,7 @@ bool TailRecursionEliminator::VisitFunctionDecl(FunctionDecl *func)
 		errs() << "****Cast to CompoundStmt success\n";
 		if (clang::CallExpr *call = dyn_cast<clang::CallExpr>(block->body_back()))
 		{
-			errs() << "****Cast to CallExpr success - this is a tail recursion\n";
+			errs() << "****Cast to CallExpr success - this is a tail call\n";
 			return ChangeCallExpr(call);
 		
 		}
@@ -86,7 +86,7 @@ bool TailRecursionEliminator::ThenElseCheck(clang::Stmt* stmt)
 {
 	if (clang::CallExpr *call = dyn_cast<clang::CallExpr>(stmt))
 	{
-		errs() << "****Cast to CallExpr success - this is a tail recursion\n";
+		errs() << "****Cast to CallExpr success - this is a tail call\n";
 		return ChangeCallExpr(call,true);
 	}
 	else if ( clang::CompoundStmt *block = dyn_cast<clang::CompoundStmt>(stmt) )
@@ -94,7 +94,7 @@ bool TailRecursionEliminator::ThenElseCheck(clang::Stmt* stmt)
 		errs() << "****Cast to CompoundStmt success\n";
 		if (clang::CallExpr *call = dyn_cast<clang::CallExpr>(block->body_back()))
 		{
-			errs() << "****Cast to CallExpr success - this is a tail recursion\n";
+			errs() << "****Cast to CallExpr success - this is a tail call\n";
 			return ChangeCallExpr(call);
 		}
 		else if (clang::IfStmt *ifstmt = dyn_cast<clang::IfStmt>(block->body_back()))
@@ -133,9 +133,14 @@ bool TailRecursionEliminator::VisitReturnStmt(ReturnStmt *ret)
 	}
 	if ( clang::CallExpr* call = dyn_cast<clang::CallExpr>(ret->getRetValue()) )
 	{
-		errs() << "***Cast to CallExpr success - tail recursion here\n";
-		RemoveReturnExprInCode(ret->getLocStart());
-		return ChangeCallExpr(call,true);
+		errs() << "***Cast to CallExpr success - this is a tail call\n";
+		std::string function_call = source_to_string(call->getLocStart(),call->getLocEnd(),m_ast_context->getSourceManager());
+
+		if ( function_call.compare(0,m_func_name.length(),m_func_name) == 0) // is recursion call
+		{
+			RemoveReturnExprInCode(ret->getLocStart());
+			return ChangeCallExpr(call,true);
+		}
 	}
     return true;
 }

@@ -6,5 +6,5 @@ int factorial(int input,int *answer)
 	}
 
 	*answer  = *answer * input;
-	factorial(input -1, answer);
+	factorial(input -1, answer);   // nema return u ne void funkciji
 }
